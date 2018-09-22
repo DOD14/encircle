@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody rb;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         rb = GetComponent<Rigidbody>();
 	}
 	
@@ -27,8 +27,15 @@ public class PlayerMovement : MonoBehaviour {
         //rb.transform.RotateAround(camPos, Camera.main.transform.forward, moveHorizontal * sidewaysFactor);
         Vector3 dirToCam = camPos - transform.position;
         dirToCam = new Vector3(dirToCam.x, dirToCam.y, 0f);
+
         transform.rotation = Quaternion.LookRotation(Vector3.forward, dirToCam);
+
+        float yPos = transform.position.y;
+        //int signum = (yPos >= 0 ? -1 : 1);
+
         rb.AddForce(dirToCam * moveVertical * radialFactor, ForceMode.Impulse);
         rb.AddRelativeForce(Vector3.right * moveHorizontal * sidewaysFactor, ForceMode.Impulse);
+
+        //Get rid of the down arrow, use mouth/touch to approach center
 	}
 }
