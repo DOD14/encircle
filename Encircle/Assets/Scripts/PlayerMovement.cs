@@ -22,19 +22,22 @@ public class PlayerMovement : MonoBehaviour {
 
         Vector3 camPos = Camera.main.transform.position;
         float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+
+        bool moveVertical;
+        if (Input.GetMouseButton(0))
+             moveVertical = true;
+        else moveVertical = false;
 
         //rb.transform.RotateAround(camPos, Camera.main.transform.forward, moveHorizontal * sidewaysFactor);
         Vector3 dirToCam = camPos - transform.position;
         dirToCam = new Vector3(dirToCam.x, dirToCam.y, 0f);
 
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, dirToCam);
-
         float yPos = transform.position.y;
         //int signum = (yPos >= 0 ? -1 : 1);
-
-        rb.AddForce(dirToCam * moveVertical * radialFactor, ForceMode.Impulse);
-        rb.AddRelativeForce(Vector3.right * moveHorizontal * sidewaysFactor, ForceMode.Impulse);
+        if(moveVertical)
+            rb.AddForce(dirToCam * radialFactor, ForceMode.Impulse);
+        rb.AddRelativeForce(Vector3.right * moveHorizontal * sidewaysFactor, ForceMode.Acceleration);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, dirToCam);
 
         //Get rid of the down arrow, use mouth/touch to approach center
 	}
