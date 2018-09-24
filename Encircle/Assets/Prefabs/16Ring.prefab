@@ -1644,6 +1644,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c154a74161ef24770b9c763521b602a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 1929837176354188}
+  - {fileID: 1864336666946872}
+  - {fileID: 1486945799808600}
+  - {fileID: 1965395869214628}
+  - {fileID: 1128541168135014}
+  - {fileID: 1399765028428170}
+  - {fileID: 1503046898900858}
+  - {fileID: 1277725270561662}
+  - {fileID: 1331672562034352}
+  - {fileID: 1102837909108268}
+  - {fileID: 1400248945953752}
+  - {fileID: 1224649147591252}
+  - {fileID: 1240926761874474}
+  - {fileID: 1834058692218982}
+  - {fileID: 1823444839143904}
+  - {fileID: 1837351101112452}
+  tileKinds:
+  - color: {r: 0, g: 1, b: 0, a: 0}
+    scoreChange: 5
+    healthChange: 1
+    probabilityRating: 5
+  - color: {r: 1, g: 0, b: 0, a: 0}
+    scoreChange: -5
+    healthChange: 2
+    probabilityRating: 3
+  - color: {r: 0.322, g: 0.372, b: 1, a: 0}
+    scoreChange: 10
+    healthChange: 0
+    probabilityRating: 1
+  - color: {r: 1, g: 1, b: 1, a: 0}
+    scoreChange: 0
+    healthChange: 0
+    probabilityRating: 10
 --- !u!114 &114852799667302604
 MonoBehaviour:
   m_ObjectHideFlags: 1

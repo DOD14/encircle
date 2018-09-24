@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 dirToCam = camPos - transform.position;
         dirToCam = new Vector3(dirToCam.x, dirToCam.y, 0f);
 
-        float yPos = transform.position.y;
+        //float yPos = transform.position.y;
         //int signum = (yPos >= 0 ? -1 : 1);
         if(moveVertical)
             rb.AddForce(dirToCam * radialFactor, ForceMode.Impulse);
-        rb.AddRelativeForce(Vector3.right * moveHorizontal * sidewaysFactor, ForceMode.Acceleration);
+        rb.AddRelativeForce(Vector3.right * moveHorizontal * sidewaysFactor, ForceMode.Impulse);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, dirToCam);
 
         //Get rid of the down arrow, use mouth/touch to approach center
