@@ -7,9 +7,12 @@ public class TileMaster : MonoBehaviour {
     public GameObject[] tiles;
     public TileKind[] tileKinds;
 
+    private Transform player;
+
 	// Use this for initialization
 	private void OnEnable()
 	{
+        player = GameObject.FindWithTag("Player").transform;
         SetupTilesProperties();	
 	}
 
@@ -51,7 +54,7 @@ public class TileMaster : MonoBehaviour {
                 {
                     TileKind tileKind = tileKinds[i];
                     MyTileProperties propertiesScript = tile.AddComponent<MyTileProperties>();
-                    propertiesScript.InitProperties(tileKind.color, tileKind.scoreChange, tileKind.healthChange);
+                    propertiesScript.InitProperties(tileKind.color, tileKind.scoreChange, tileKind.healthChange, player);
                     break;
                 }
             }
