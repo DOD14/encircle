@@ -41,4 +41,13 @@ public class PlayerMovement : MonoBehaviour {
 
         //Get rid of the down arrow, use mouth/touch to approach center
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Tile"))
+        {
+            MyTileProperties tileProps = collision.gameObject.GetComponent<MyTileProperties>();
+            GameManager.instance.ModifyScoreAndHealth(tileProps.deltaScore, tileProps.deltaHealth);
+        }
+    }
 }

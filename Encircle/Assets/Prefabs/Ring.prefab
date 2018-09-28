@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 23057549209901734}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 23243921652347668}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 23128376101224412}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 23395888641030402}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 23599906026726618}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 23209086492265250}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 23265814087976222}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 23292346351223152}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 1963090597455670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 3}
   m_Children:
   - {fileID: 4499797619722986}
   - {fileID: 4966276370525224}
@@ -848,6 +848,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c154a74161ef24770b9c763521b602a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 1322623760861850}
+  - {fileID: 1455908444893232}
+  - {fileID: 1426452291410132}
+  - {fileID: 1636253585647442}
+  - {fileID: 1267240944923344}
+  - {fileID: 1530299121864624}
+  - {fileID: 1778645844346764}
+  - {fileID: 1759605827919092}
+  tileKinds:
+  - color: {r: 0, g: 1, b: 0, a: 0}
+    scoreChange: 0
+    healthChange: 1
+    probabilityRating: 2
+  - color: {r: 1, g: 0, b: 0, a: 0}
+    scoreChange: 0
+    healthChange: -2
+    probabilityRating: 3
+  - color: {r: 0.322, g: 0.372, b: 1, a: 0}
+    scoreChange: 10
+    healthChange: 0
+    probabilityRating: 1
+  - color: {r: 1, g: 1, b: 1, a: 0}
+    scoreChange: 0
+    healthChange: 0
+    probabilityRating: 30
 --- !u!114 &114510032180124764
 MonoBehaviour:
   m_ObjectHideFlags: 1
