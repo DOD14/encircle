@@ -4,20 +4,9 @@ using UnityEngine;
 
 public class TileMaster : MonoBehaviour {
 
-    public GameObject[] tiles;
-    public TileKind[] tileKinds;
-
-    private Transform player;
-
-	// Use this for initialization
-	private void OnEnable()
-	{
-        player = GameObject.FindWithTag("Player").transform;
-        SetupTilesProperties();	
-	}
-
     [System.Serializable]
-    public class TileKind {
+    public class TileKind
+    {
 
         public Color color;
         public int scoreChange;
@@ -25,6 +14,43 @@ public class TileMaster : MonoBehaviour {
         public int probabilityRating;
 
     }
+
+    public GameObject[] tiles;
+    public TileKind[] tileKinds;
+
+    private Transform player;
+    private bool shiny = false;
+
+	// Use this for initialization
+	private void OnEnable()
+	{
+        player = GameObject.FindWithTag("Player").transform;
+        shiny = false;
+        SetupTilesProperties();	
+	}
+
+	private void FixedUpdate()
+	{
+        if (Mathf.Abs(transform.position.z - player.transform.position.z) < 2.5)
+        {
+            if (!shiny)
+            {
+                for (int i = 0; i < tiles.Length; i++)
+                {
+                    tiles[i].GetComponent<MyTileProperties>().LightUp();
+                }
+                shiny = true;
+            }
+        }
+        else
+            if(shiny)
+                for (int i = 0; i < tiles.Length; i++)
+                {
+                    tiles[i].GetComponent<MyTileProperties>().LightOff();
+                }
+
+    }
+
 
     void SetupTilesProperties()
     {
@@ -50,7 +76,7 @@ public class TileMaster : MonoBehaviour {
             float randomPick = sum * Random.value;
             for (int i = 0; i < length; i++)
             {
-                if (randomPick >= intervals[i] && randomPick <= intervals[i + 1])
+                if (randomPick >= intervals[i] && randomPick <= intervals[i+1])
                 {
                     TileKind tileKind = tileKinds[i];
                     MyTileProperties propertiesScript = tile.AddComponent<MyTileProperties>();

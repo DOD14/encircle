@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyTileProperties : MonoBehaviour {
+public class MyTileProperties : MonoBehaviour
+{
 
     [HideInInspector]
     public int deltaScore;
@@ -12,13 +13,12 @@ public class MyTileProperties : MonoBehaviour {
     private Color myColor;
     private Renderer myRenderer;
 
-
-	private void Start()
-	{
+    private void OnEnable()
+    {
         myRenderer = GetComponent<Renderer>();
-	}
+    }
 
-	public void InitProperties(Color color, int score, int health, Transform player)
+    public void InitProperties(Color color, int score, int health, Transform player)
     {
         myColor = color;
         myPlayer = player;
@@ -27,11 +27,18 @@ public class MyTileProperties : MonoBehaviour {
         deltaHealth = health;
     }
 
-	private void FixedUpdate()
-	{
-        while(Mathf.Abs(transform.position.z - myPlayer.position.z) < 1f && )
+    public void LightUp()
+    {
+        myRenderer.material.SetColor("_EmissionColor", myColor);
+    }
 
-            myRenderer.material.SetColor("_EmissionColor", myColor);
-        
-	}
+    public void LightOff()
+    {
+        myRenderer.material.SetColor("_EmissionColor", Color.black);
+        //try a coroutine to fade more nicely?
+        //figure out why the emission color doesn't match the real color
+        //move the spawn point further off
+        //wait a few seconds before dropping the player? maybe spawn them instead
+    }
+
 }

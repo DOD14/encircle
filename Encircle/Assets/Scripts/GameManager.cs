@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
+        Time.timeScale = 1f;
         score = 0;
         health = 10;
 
@@ -30,13 +31,18 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 	}
 
-    public void ModifyScoreAndHealth(int deltaScore, int deltaHealth)
+    public void ModifyScore(int deltaScore)
     {
         score += deltaScore;
-        health += deltaHealth;
         scoreText.text = score.ToString();
+    }
+
+    public void ModifyHealth(int deltaHealth)
+    {
+        health += deltaHealth;
         healthText.text = health.ToString();
-        if(health <= 0)
+
+        if (health <= 0)
         {
             GameOver();
         }

@@ -874,6 +874,10 @@ MonoBehaviour:
     scoreChange: 0
     healthChange: 0
     probabilityRating: 30
+  - color: {r: 1, g: 0.947, b: 0.522, a: 0}
+    scoreChange: 0
+    healthChange: 0
+    probabilityRating: 0
 --- !u!114 &114510032180124764
 MonoBehaviour:
   m_ObjectHideFlags: 1

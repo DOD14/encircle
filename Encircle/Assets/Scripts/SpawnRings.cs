@@ -23,6 +23,7 @@ public class SpawnRings : MonoBehaviour {
         {
             timer = 0f;
             SpawnRing();
+            GameManager.instance.ModifyScore(5);
         }
 	}
 
