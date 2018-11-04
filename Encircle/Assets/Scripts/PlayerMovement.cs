@@ -47,8 +47,13 @@ public class PlayerMovement : MonoBehaviour {
         if (collision.gameObject.CompareTag("Tile"))
         {
             MyTileProperties tileProps = collision.gameObject.GetComponent<MyTileProperties>();
-            GameManager.instance.ModifyScore(tileProps.deltaScore);
-            GameManager.instance.ModifyHealth(tileProps.deltaHealth);
+            if(tileProps){
+                GetComponent<Renderer>().material.SetColor("_Color", collision.gameObject.GetComponent<Renderer>().material.color);
+                GameManager.instance.ModifyScore(tileProps.deltaScore);
+                GameManager.instance.ModifyHealth(tileProps.deltaHealth);
+                tileProps.LightUp();
+                Destroy(tileProps);
+            }
         }
     }
 }

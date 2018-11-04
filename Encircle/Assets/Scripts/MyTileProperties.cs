@@ -29,12 +29,13 @@ public class MyTileProperties : MonoBehaviour
 
     public void LightUp()
     {
-        myRenderer.material.SetColor("_EmissionColor", myColor);
+        Debug.Log("shine!");
+        myRenderer.material.SetColor("_Color", Color.white);
     }
 
     public void LightOff()
     {
-        myRenderer.material.SetColor("_EmissionColor", Color.black);
+        myRenderer.material.SetColor("_Color", Color.black);
         //try a coroutine to fade more nicely?
         //figure out why the emission color doesn't match the real color
         //move the spawn point further off

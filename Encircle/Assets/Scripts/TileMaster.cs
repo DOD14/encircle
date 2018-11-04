@@ -18,6 +18,7 @@ public class TileMaster : MonoBehaviour {
     public GameObject[] tiles;
     public TileKind[] tileKinds;
 
+    private MyTileProperties[] tileScripts;
     private Transform player;
     private bool shiny = false;
 
@@ -26,6 +27,7 @@ public class TileMaster : MonoBehaviour {
 	{
         player = GameObject.FindWithTag("Player").transform;
         shiny = false;
+        tileScripts = new MyTileProperties[tiles.Length];
         SetupTilesProperties();	
 	}
 
@@ -37,7 +39,7 @@ public class TileMaster : MonoBehaviour {
             {
                 for (int i = 0; i < tiles.Length; i++)
                 {
-                    tiles[i].GetComponent<MyTileProperties>().LightUp();
+                    tileScripts[i].LightUp();
                 }
                 shiny = true;
             }
@@ -46,7 +48,7 @@ public class TileMaster : MonoBehaviour {
             if(shiny)
                 for (int i = 0; i < tiles.Length; i++)
                 {
-                    tiles[i].GetComponent<MyTileProperties>().LightOff();
+                    tileScripts[i].LightOff();
                 }
 
     }
@@ -64,11 +66,12 @@ public class TileMaster : MonoBehaviour {
 
         int[] intervals = new int[length+1];
         int counter = 0;
+        intervals[0] = 0;
 
-        for (int i = 0; i < length; i++)
+        for (int i = 1; i < length+1; i++)
         {
+            counter += tileKinds[i-1].probabilityRating;
             intervals[i] = counter;
-            counter += tileKinds[i].probabilityRating;
         }
 
         foreach(GameObject tile in tiles)
@@ -80,6 +83,7 @@ public class TileMaster : MonoBehaviour {
                 {
                     TileKind tileKind = tileKinds[i];
                     MyTileProperties propertiesScript = tile.AddComponent<MyTileProperties>();
+                    tileScripts[i] = propertiesScript;
                     propertiesScript.InitProperties(tileKind.color, tileKind.scoreChange, tileKind.healthChange, player);
                     break;
                 }
